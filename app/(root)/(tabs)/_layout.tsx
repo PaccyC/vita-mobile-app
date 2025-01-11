@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native'
 import React from 'react'
+import { Stack } from 'expo-router'
 
 const TabsLayout = () => {
   return (
-    <View>
-      <Text>TabsLayout</Text>
-    </View>
+    <Stack>
+        <Stack.Screen  name='doctor-profile'/>
+        <Stack.Screen  name='create-appointment'/>
+    </Stack>
   )
 }
 

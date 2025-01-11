@@ -2,15 +2,14 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
-
-
+import SplashScreenComponent from "../components/SplashScreenComponent"
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-
+  const [isAppReady, setAppReady] = useState(false); // State to track app readiness
   const [loaded] = useFonts({
     "Jakarta-Bold": require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
     "Jakarta-ExtraBold": require("../assets/fonts/PlusJakartaSans-ExtraBold.ttf"),
@@ -23,28 +22,30 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      setTimeout(() => {
+        SplashScreen.hideAsync();
+        setAppReady(true); 
+      }, 2000); 
     }
   }, [loaded]);
 
-  if (!loaded) {
-    return null;
+  if (!isAppReady) {
+    return <SplashScreenComponent />;
   }
 
   return (
     <>
-    
-    <Stack
-    screenOptions={{
-      headerShown: false,
-    }}
-    >
-      <Stack.Screen name="index"  />
-      <Stack.Screen name="(auth)"  />
-      <Stack.Screen name="(root)"  />
-      <Stack.Screen name="+not-found" />
-    </Stack>
-    <StatusBar style="auto" />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="index" />
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(root)" />
+        <Stack.Screen name="+not-found" />
+      </Stack>
+      <StatusBar style="auto" />
     </>
   );
 }
