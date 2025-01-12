@@ -2,22 +2,15 @@ import { TouchableOpacity,Text } from 'react-native'
 import React from 'react'
 import tw from "twrnc"
 
-interface ButtonProps {
-    title: string;
-    onPress: () => void;
-    disabled?: boolean;
-    style?: any;
-    backgroundColor?: string
-    textColor?: string
-  
-}
-const CustomButton = ({title,onPress,disabled,textColor, style,backgroundColor}: ButtonProps) => {
+
+const CustomButton = ({title,onPress,disabled,textColor,IconLeft, style,backgroundColor}: ButtonProps) => {
   return (
     <TouchableOpacity 
       onPress={onPress}
-      style={[tw` w-full p-3 rounded-lg   ${style}`,{backgroundColor}]}
+      style={[tw`w-full rounded-lg flex flex-row justify-center p-3 items-center    ${style}`,{backgroundColor}]}
       >
-        <Text style={[tw`text-center font-bold`,{color: textColor}]}>{title}</Text>
+     {IconLeft && <IconLeft/>}
+    <Text style={[tw`text-center font-bold`,{color: textColor}]}>{title}</Text>
 
     </TouchableOpacity>
   )

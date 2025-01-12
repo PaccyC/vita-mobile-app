@@ -10,6 +10,7 @@ const AuthLayout = () => {
   
     }}
     >
+        <Stack.Screen name='onboarding'/>
         <Stack.Screen name='welcome'/>
         <Stack.Screen name='sign-up'/>
         <Stack.Screen name='sign-in'/>

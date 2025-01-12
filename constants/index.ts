@@ -3,8 +3,9 @@ import SecondOnboardingImage from "@/assets/images/onboarding_image_2.png"
 import ThirdOnboardingImage from "@/assets/images/onboarding_image_3.png"
 import WelcomeImage from "@/assets/images/welcome.png"
 import check from "@/assets/icons/check.svg"
-
-const images = {
+import google from "@/assets/icons/google.svg"
+import apple from "@/assets/icons/apple.svg"
+export const images = {
     FirstOnboardingImage,
     SecondOnboardingImage,
     ThirdOnboardingImage,
@@ -14,6 +15,8 @@ const images = {
 
 export const icons = {
     check,
+    google,
+    apple,
 }
 
 

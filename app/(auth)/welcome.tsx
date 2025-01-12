@@ -1,78 +1,88 @@
-import { SafeAreaView, View, Image, Text } from "react-native";
-import React, { useRef, useState } from "react";
+import { View, Text, SafeAreaView, Image } from "react-native";
+import React from "react";
 import tw from "twrnc";
-import Swiper from "react-native-swiper";
-import { data } from "@/constants";
+import { icons, images } from "@/constants";
 import CustomButton from "@/components/CustomButton";
-import { router } from "expo-router";
-
+import { Link } from "expo-router";
 const Welcome = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef<Swiper>(null);
-  const lastSlide = activeIndex === data.onboarding.length - 1;
-
   return (
-    <SafeAreaView style={tw`flex h-full justify-center items-center`}>
-      <Swiper
-        loop={false}
-        ref={swiperRef}
-        dot={
-          <View
-            style={[tw`h-1 mx-1`, { width: 32, backgroundColor: "#E5E7EB" }]}
-          />
-        }
-        activeDot={
-          <View
-            style={[
-              tw`h-1 mx-1 rounded-full`,
-              { width: 32, backgroundColor: "#254EDB" },
-            ]}
-          />
-        }
-        onIndexChanged={(index) => setActiveIndex(index)}
-      >
-        {data.onboarding.map((item) => (
-          <View key={item.id}>
-            <Image source={item.image} style={[tw`w-full`, { height: 400 }]} />
+    <SafeAreaView style={tw`flex justify-center items-center`}>
+      <Image source={images.WelcomeImage} resizeMode="contain" />
 
-            <View style={tw`p-5`}>
-              <Text style={tw`font-bold text-3xl`}>{item.title}</Text>
-              <Text style={[tw`font-medium text-sm`, { color: "#3F3F46" }]}>
-                {item.description}
-              </Text>
-            </View>
-          </View>
-        ))}
-      </Swiper>
+      <View style={tw` w-full px-3 py-5  items-start`}>
+        <Text style={[tw`text-2xl`, { fontFamily: "Jakarta-Bold" }]}>Vita</Text>
+        <Text
+          style={[
+            tw`font-medium mb-8`,
+            { color: "#3F3F46", fontSize: 14, fontFamily: "Jakarta-Medium" },
+          ]}
+        >
+          Begin your journey to better health!
+        </Text>
 
-      {lastSlide ? (
-        <View style={tw`px-5`}>
+        <View style={tw`w-full flex gap-3`}>
           <CustomButton
-            title="Get Started !"
-            onPress={()=> router.replace("/(auth)/sign-up")}
+            title="Continue With Phone Number"
+            onPress={() => console.log("Continue With Phone Number")}
+            backgroundColor="#254EDB"
             textColor="white"
-            backgroundColor="#254EDB"
-            style="w-full"
+            style={` text-sm`}
           />
-        </View>
-      ) : (
-        <View style={tw`flex-row w-full justify-between px-5`}>
+           <CustomButton
+       title='Sign In with Google'
+       style=" w-full shadow-none border border-[#D2D6DB]"
+       IconLeft={()=>(
+        <Image 
+        source={icons.google}
+        style={tw`w-5 h-5 mx-2`}
+        resizeMode='contain'
+        
+        />
+        
+       )}
+       onPress={()=>{}}
+       textColor="#254EDB"
+       
+
+       
+      />
           <CustomButton
-            title="Skip"
-            onPress={()=>router.replace("/(auth)/sign-up")}
-            backgroundColor="#F9FAFB"
-            textColor="#18181B"
-            style="flex-1 mr-2"
-          />
-          <CustomButton
-            title="Next"
-            onPress={()=> swiperRef.current?.scrollBy(1)}
-            backgroundColor="#254EDB"
-            textColor="#FFFFFF"
-            style="flex-1 ml-2"
-          />
+       title='Sign In with Apple'
+       style=" w-full shadow-none"
+       IconLeft={()=>(
+        <Image 
+        source={icons.google}
+        style={tw`w-5 h-5 mx-2`}
+        resizeMode='contain'
+        />
+       )}
+       onPress={()=>{}}
+       textColor="white"
+       backgroundColor="#254EDB"
+
+       
+      />
         </View>
-      )}
+
+        <Link style={tw`mt-8 w-full text-center`} href="/(auth)/sign-in">
+          <Text>Already have an account? </Text>
+          <Text style={[{ color: "#254EDB" }]}>Sign In</Text>
+        </Link>
+      </View>
+
+      <View style={tw`mt-8 px-10`}>
+        <Text style={tw`text-center text-sm text-gray-500`}>
+          By signing up or logging in, I accept the apps{" "}
+          <Link href="/" style={tw`text-blue-600 font-medium`}>
+            Terms of Service
+          </Link>{" "}
+          and{" "}
+          <Link href="/" style={tw`text-blue-600 font-medium`}>
+            Privacy Policy
+          </Link>
+          .
+        </Text>
+      </View>
     </SafeAreaView>
   );
 };
