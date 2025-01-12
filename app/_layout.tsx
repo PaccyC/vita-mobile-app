@@ -5,11 +5,12 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
 import SplashScreenComponent from "../components/SplashScreenComponent"
+import "../globals.css"
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [isAppReady, setAppReady] = useState(false); // State to track app readiness
+  const [isAppReady, setAppReady] = useState(false); 
   const [loaded] = useFonts({
     "Jakarta-Bold": require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
     "Jakarta-ExtraBold": require("../assets/fonts/PlusJakartaSans-ExtraBold.ttf"),
