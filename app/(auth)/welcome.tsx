@@ -3,10 +3,11 @@ import React from "react";
 import tw from "twrnc";
 import { icons, images } from "@/constants";
 import CustomButton from "@/components/CustomButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import Footer from "@/components/Footer";
 const Welcome = () => {
   return (
-    <SafeAreaView style={tw`flex justify-center items-center`}>
+    <SafeAreaView style={tw`flex flex-1 relative  items-center`}>
       <Image source={images.WelcomeImage} resizeMode="contain" />
 
       <View style={tw` w-full px-3 py-5  items-start`}>
@@ -23,7 +24,7 @@ const Welcome = () => {
         <View style={tw`w-full flex gap-3`}>
           <CustomButton
             title="Continue With Phone Number"
-            onPress={() => console.log("Continue With Phone Number")}
+            onPress={()=>router.replace("/(auth)/sign-up")}
             backgroundColor="#254EDB"
             textColor="white"
             style={` text-sm`}
@@ -70,19 +71,8 @@ const Welcome = () => {
         </Link>
       </View>
 
-      <View style={tw`mt-8 px-10`}>
-        <Text style={tw`text-center text-sm text-gray-500`}>
-          By signing up or logging in, I accept the apps{" "}
-          <Link href="/" style={tw`text-blue-600 font-medium`}>
-            Terms of Service
-          </Link>{" "}
-          and{" "}
-          <Link href="/" style={tw`text-blue-600 font-medium`}>
-            Privacy Policy
-          </Link>
-          .
-        </Text>
-      </View>
+     {/* Footer text */}
+     <Footer/>
     </SafeAreaView>
   );
 };
