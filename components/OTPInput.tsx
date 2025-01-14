@@ -1,7 +1,7 @@
-import { View, Text, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard } from 'react-native'
+import { View, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard } from 'react-native'
 import React from 'react'
-import { OTPInputProps } from '@/types/types'
 import tw from "twrnc"
+
 const OTPInput = ({
 
     codes,

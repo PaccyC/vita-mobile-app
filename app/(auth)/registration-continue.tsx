@@ -4,6 +4,7 @@ import CustomInput from "@/components/CustomInput";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link } from "expo-router";
 import { View, Text, SafeAreaView,ScrollView, TouchableOpacity } from "react-native";
+
 import tw from "twrnc";
 
 const RegistrationContinue = () => {
@@ -78,14 +79,21 @@ const RegistrationContinue = () => {
             placeholder="Confirm your password"
           />
 
-          <CustomButton onPress={() => {}} title="Sign In" style="mt-6" />
+          <CustomButton 
+            onPress={() => {}} 
+            title="Sign up" 
+            style="mt-6 border border-[#F3F4F6]"
+            textColor="#D4D4D8"
+            backgroundColor="#F3F4F6"
+            
+            />
 
           <Link
             href="/(auth)/sign-in"
             style={[tw`mt-10 text-center text-lg`, { color: "#858585" }]}
           >
-            <Text>Don't have an account? </Text>
-            <Text style={[{ color: "#0286FF" }]}>Sign Up</Text>
+            <Text style={[tw`text-[#254EDB] text-sm`,{fontFamily:"Jakarta-Bold"}]}>I have an account? Sign in</Text>
+            
           </Link>
         </View>
       </View>

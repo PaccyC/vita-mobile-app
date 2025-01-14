@@ -8,3 +8,10 @@ declare interface ButtonProps extends TouchableHighlightProps{
     IconLeft?: React.ComponentType<any>;
   
 }
+
+declare interface OTPInputProps {
+    codes: string[];
+    refs: RefObject<TextInput>[];
+    errorMessages: string[] | undefined;
+    onChangeCode: (text: string, index: number) => void;
+  }
