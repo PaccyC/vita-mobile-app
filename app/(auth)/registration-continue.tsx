@@ -1,43 +1,44 @@
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
+import { icons } from "@/constants";
 
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link } from "expo-router";
-import { View, Text, SafeAreaView,ScrollView, TouchableOpacity } from "react-native";
+import { useState } from "react";
+import { View, Text,ScrollView, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import tw from "twrnc";
 
 const RegistrationContinue = () => {
+  const [isValid,setIsValid]= useState(true)
+  const handleGoBack = ()=>{}
   return (
-    <ScrollView
-      style={tw`flex flex-1 bg-white`}
-      contentContainerStyle={
-        {
-          justifyContent: "space-between",
-          alignItems:'center'
-        }
-      }
-    >
-      <View style={tw`flex-1 mt-8`}>
+    <SafeAreaView style={tw`flex-1 bg-white`}>
+    <ScrollView style={tw`flex-grow`}>
+    <View style={tw`flex-1 bg-white py-4`}>
+      <View style={tw`w-full  px-2`}>
         <TouchableOpacity
-          onPress={() => {}}
-          style={[tw`w-full items-start px-3 mb-5 relative top-2 `]}
+          onPress={handleGoBack}
+          style={tw`w-[200px] items-start mb-4`}
         >
-          <MaterialCommunityIcons name="chevron-left" size={30} color="black" />
+          <MaterialCommunityIcons
+            name="chevron-left"
+            size={30}
+            color="black"
+          />
         </TouchableOpacity>
-        <View
-          style={[tw`w-full mb-5`, { backgroundColor: "black", height: 2 }]}
-        />
-        <View style={tw`px-3`}>
-          <Text style={[tw`text-3xl mb-4`, { fontFamily: "Jakarta-SemiBold" }]}>
-            Register
-          </Text>
-          <Text style={[tw`text-gray-600 text-base mb-6 leading-5`]}>
-          Please enter a form to continue the register
-          </Text>
-        </View>
-
-        <View style={tw`p-5`}>
+      </View>
+      <View
+        style={[tw`w-full mb-3`, { backgroundColor: "#F3F4F6", height: 2 }]}
+      />
+      <View style={tw`px-3`}>
+        <Text style={[tw`text-3xl mb-3`, { fontFamily: "Jakarta-SemiBold" }]}>
+        Register
+        </Text>
+        <Text style={[tw`text-gray-600 text-base mb-6 leading-5`]}>
+        Please enter a form to continue the register
+        </Text>
           <CustomInput
             label="Email"
             labelStyle="text-[#18181B]"
@@ -67,6 +68,7 @@ const RegistrationContinue = () => {
             style=""
             secureTextEntry={true}
             placeholder="Enter your password"
+            icon={icons.check}
           />
           <CustomInput
             label="Password"
@@ -77,14 +79,15 @@ const RegistrationContinue = () => {
             style=""
             secureTextEntry={true}
             placeholder="Confirm your password"
+            icon={icons.check}
           />
 
           <CustomButton 
             onPress={() => {}} 
             title="Sign up" 
             style="mt-6 border border-[#F3F4F6]"
-            textColor="#D4D4D8"
-            backgroundColor="#F3F4F6"
+            textColor={`${isValid ? "white":"#D4D4D8"}`}
+            backgroundColor={`${isValid ? "#254EDB":"#F3F4F6  "}`}
             
             />
 
@@ -98,6 +101,7 @@ const RegistrationContinue = () => {
         </View>
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -5,6 +5,8 @@ import WelcomeImage from "@/assets/images/welcome.png"
 import check from "@/assets/icons/check.svg"
 import google from "@/assets/icons/google.svg"
 import apple from "@/assets/icons/apple.svg"
+import eye from  "@/assets/icons/eye.svg"
+import timer from "@/assets/icons/timer.svg"
 export const images = {
     FirstOnboardingImage,
     SecondOnboardingImage,
@@ -17,6 +19,7 @@ export const icons = {
     check,
     google,
     apple,
+    eye, timer
 }
 
 

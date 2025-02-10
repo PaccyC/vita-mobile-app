@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard } from 'react-native'
+import { View, Text, TouchableOpacity, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard, ScrollView } from 'react-native'
 import React,{useRef, useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -27,10 +27,10 @@ const Register = () => {
     }
   }
   return (
-    <SafeAreaView style={[tw`flex flex-1 items-center justify-between bg-white`]}>
+    <SafeAreaView style={[tw`flex flex-1  bg-white`]}>
+      <ScrollView style={tw`flex-grow`}>
 
-   <View style={tw`flex-1`}>
-
+    <View style={tw`bg-white flex items-center justify-between`}>
       <TouchableOpacity
       onPress={handleGoBack}
       style={tw`w-full items-start px-3 mb-5`}>
@@ -47,7 +47,7 @@ const Register = () => {
 
         <Text style={tw``}>Phone Number</Text>
 
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding":"height"}>
+      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding":"height"}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
         <PhoneInput
@@ -70,7 +70,6 @@ const Register = () => {
       </KeyboardAvoidingView>
 
       </View>
-      </View>
       <View style={tw`px-3 w-full`}>
         <CustomButton
          title='Continue'
@@ -83,6 +82,8 @@ const Register = () => {
         <Footer/>
         
       </View>
+      </View>
+      </ScrollView>
     </SafeAreaView>
   )
 }

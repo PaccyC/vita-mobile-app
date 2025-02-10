@@ -1,6 +1,7 @@
 import { TouchableOpacity,Text } from 'react-native'
 import React from 'react'
 import tw from "twrnc"
+import { ButtonProps } from '@/types/types'
 
 
 const CustomButton = ({title,onPress,disabled,textColor,IconLeft, style,backgroundColor}: ButtonProps) => {

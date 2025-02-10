@@ -36,14 +36,17 @@ const CustomInput = ({
             {label}
           </Text>
           <View style={[tw`flex flex-row justify-start items-center  rounded rounded-xl border border-[#D2D6DB] ${containerStyle}`]}>
-             {icon && <Image source={icon} style={tw`h-6 w-6 ml-4 ${iconStyle}`}/>}
              <TextInput 
               value={value} 
               onChangeText={onChangeText}
               style={tw`rounded-full p-4 font-semibold  text-[15px] flex-1 text-left ${inputStyle}`}
               placeholder={placeholder}
               secureTextEntry={secureTextEntry}
+          
+              numberOfLines={1}
               />
+              {icon && 
+              <Image  source={icon} style={tw`h-6 w-6 ml-4 ${iconStyle}`}/>}
           </View>
         </View>
       </TouchableWithoutFeedback>

@@ -1,3 +1,5 @@
+import { TextInputProps } from "react-native";
+
 declare interface ButtonProps extends TouchableHighlightProps{
     title: string;
     onPress: () => void;
@@ -15,3 +17,16 @@ declare interface OTPInputProps {
     errorMessages: string[] | undefined;
     onChangeCode: (text: string, index: number) => void;
   }
+
+declare interface  InputFieldProps extends TextInputProps {
+    label:string;
+    labelStyle:string;
+    icon?:any;
+    iconStyle?;
+    inputStyle?;
+    style?:string;
+    containerStyle:string;
+    
+   
+    
+}
