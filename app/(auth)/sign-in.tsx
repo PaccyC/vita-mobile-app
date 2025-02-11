@@ -72,7 +72,7 @@ const SignIn = () => {
               backgroundColor="#254EDB"
               textColor="white"
               style="mt-10"
-              onPress={() => {}}
+              onPress={() => router.replace("/(root)/(tabs)/doctor-profile")}
             />
 
             <View

@@ -7,6 +7,13 @@ import google from "@/assets/icons/google.svg"
 import apple from "@/assets/icons/apple.svg"
 import eye from  "@/assets/icons/eye.svg"
 import timer from "@/assets/icons/timer.svg"
+import chevronIcon from "@/assets/icons/chevron-left.svg";
+import person from "@/assets/icons/person.svg"
+import experience from "@/assets/icons/experience.svg"
+import star from "@/assets/icons/star.svg"
+import chat from "@/assets/icons/chat.svg"
+import call from "@/assets/icons/call.svg"
+import video from "@/assets/icons/video.svg"
 export const images = {
     FirstOnboardingImage,
     SecondOnboardingImage,
@@ -19,7 +26,16 @@ export const icons = {
     check,
     google,
     apple,
-    eye, timer
+    eye, 
+    timer,
+    chevronIcon,
+    person,
+    experience,
+    star,
+    chat,
+    call,
+    video,
+
 }
 
 
