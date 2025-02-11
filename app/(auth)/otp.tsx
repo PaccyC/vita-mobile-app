@@ -3,8 +3,7 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-  Image,
-  ScrollView,
+ 
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
@@ -16,7 +15,6 @@ import PhoneInput from "react-native-phone-number-input";
 import CustomButton from "@/components/CustomButton";
 import Footer from "@/components/Footer";
 import OTPInput from "@/components/OTPInput";
-import { icons } from "@/constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TimerSvg from "@/assets/svgs/TimerSvg";
 

@@ -2,28 +2,20 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Image,
   FlatList,
   ScrollView,
   TextInput,
-  StyleSheet
+  
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "twrnc";
-import { icons } from "@/constants";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import CustomInput from "@/components/CustomInput";
-import Feather from "@expo/vector-icons/Feather";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";
+import Entypo from '@expo/vector-icons/Entypo';
 
-const dates = [
-  { id: 1, day: "13", label: "MON" },
-  { id: 2, day: "14", label: "TUE" },
-  { id: 3, day: "15", label: "WED" },
-  { id: 4, day: "16", label: "THUR" },
-];
 
 const timeSlots = [
   "09:00 AM",
@@ -42,9 +34,49 @@ const timeSlots = [
 
 const genders = ["Male", "Female"];
 const CreateAppointment = () => {
-  const [selectedDate, setSelectedDate] = useState(2);
+
+
+  const currentDate = new Date();
+  
+  const [selectedDate, setSelectedDate] = useState(currentDate.getDate());
   const [selectedTime, setSelectedTime] = useState("10:00 AM");
   const [selectedGender, setSelectedGender] = useState("Male");
+
+
+
+  const [month, setMonth] = useState(currentDate.getMonth())
+  const [year, setYear] = useState(currentDate.getFullYear());
+  const [dates, setDates] = useState<any>([]);
+
+  const generateDates = () => {
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0).getDate(); 
+    const newDates = [];
+
+    for (let day = 1; day <= lastDay; day++) {
+      const date = new Date(year, month, day);
+      const weekDay = date.toLocaleDateString("en-US", { weekday: "short" }).toUpperCase();
+      newDates.push({ id: day, day: day.toString(), label: weekDay });
+    }
+
+    setDates(newDates);
+  };
+
+  useEffect(() => {
+    generateDates();
+  }, [month, year]);
+
+  const prevMonth = () => {
+    setMonth((prev) => (prev === 0 ? 11 : prev - 1));
+    if (month === 0) setYear((prev) => prev - 1);
+  };
+
+  // Function to go to the next month
+  const nextMonth = () => {
+    setMonth((prev) => (prev === 11 ? 0 : prev + 1));
+    if (month === 11) setYear((prev) => prev + 1);
+  };
+
 
   return (
     <SafeAreaView style={tw`flex-1 bg-white `}>
@@ -66,8 +98,24 @@ const CreateAppointment = () => {
           </Text>
         </View>
 
-        <View style={tw`mt-6`}>
-          <Text style={tw`text-lg font-semibold mb-4`}>July, 2020</Text>
+     =<View style={tw`mt-6`}>
+    
+          <View style={tw`flex flex-row items-center justify-between mb-4`}>
+            <TouchableOpacity onPress={prevMonth}>
+              <Entypo name="chevron-left" size={24} color="black" />
+            </TouchableOpacity>
+            <Text style={tw`text-lg font-semibold`}>
+              {new Date(year, month).toLocaleDateString("en-US", {
+                month: "long",
+                year: "numeric",
+              })}
+            </Text>
+            <TouchableOpacity onPress={nextMonth}>
+              <Entypo name="chevron-right" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
+
+          {/* Days List */}
           <FlatList
             horizontal
             data={dates}
@@ -152,6 +200,7 @@ const CreateAppointment = () => {
           <View style={tw`flex flex-row gap-2`}>
             {genders.map((gender)=>(
               <TouchableOpacity
+              key={gender}
               onPress={()=>setSelectedGender(gender)}
               style={tw`px-8  py-3 mr-2 rounded-lg ${selectedGender ===  gender ? "bg-[#3E64FF]": 'bg-transparent border border-[#6B779A]'}`}
               >

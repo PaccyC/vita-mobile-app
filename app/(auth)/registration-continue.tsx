@@ -1,6 +1,7 @@
+import EyeSvg from "@/assets/svgs/EyeSvg";
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
-import { icons } from "@/constants";
+
 
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link } from "expo-router";
@@ -68,7 +69,7 @@ const RegistrationContinue = () => {
             style=""
             secureTextEntry={true}
             placeholder="Enter your password"
-            icon={icons.check}
+            icon={()=><EyeSvg/>}
           />
           <CustomInput
             label="Password"
@@ -79,7 +80,7 @@ const RegistrationContinue = () => {
             style=""
             secureTextEntry={true}
             placeholder="Confirm your password"
-            icon={icons.check}
+            icon={()=><EyeSvg/>}
           />
 
           <CustomButton 

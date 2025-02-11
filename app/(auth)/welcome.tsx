@@ -1,7 +1,7 @@
-import { View, Text, SafeAreaView, Image } from "react-native";
+import { View, Text, SafeAreaView, Image, ScrollView } from "react-native";
 import React from "react";
 import tw from "twrnc";
-import { icons, images } from "@/constants";
+import {images } from "@/constants";
 import CustomButton from "@/components/CustomButton";
 import { Link, router } from "expo-router";
 import Footer from "@/components/Footer";
@@ -9,10 +9,14 @@ import GoogleSvg from "@/assets/svgs/GoogleSvg";
 import AppleSvg from "@/assets/svgs/AppleSvg";
 const Welcome = () => {
   return (
-    <SafeAreaView style={tw`flex flex-1 relative  items-center`}>
+    <SafeAreaView style={tw`flex flex-1 relative  items-center `}>
+      <ScrollView 
+        style={tw`flex-grow`}
+        showsVerticalScrollIndicator={false}
+        >
       <Image source={images.WelcomeImage} resizeMode="contain" />
 
-      <View style={tw` w-full px-3 py-5  items-start`}>
+      <View style={tw`w-full px-3 py-5  items-start`}>
         <Text style={[tw`text-2xl`, { fontFamily: "Jakarta-Bold" }]}>Vita</Text>
         <Text
           style={[
@@ -63,6 +67,7 @@ const Welcome = () => {
 
      {/* Footer text */}
      <Footer/>
+     </ScrollView>
     </SafeAreaView>
   );
 };

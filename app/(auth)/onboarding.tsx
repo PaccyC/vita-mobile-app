@@ -12,7 +12,7 @@ const Onboarding = () => {
   const lastSlide = activeIndex === data.onboarding.length - 1;
 
   return (
-    <SafeAreaView style={tw`flex h-full justify-center items-center`}>
+    <SafeAreaView style={tw`flex h-full justify-center items-center pb-8`}>
       <Swiper
         loop={false}
         ref={swiperRef}
@@ -29,15 +29,20 @@ const Onboarding = () => {
             ]}
           />
         }
+        paginationStyle={{
+          position: "absolute",
+          bottom: 170,
+          alignSelf: "flex-start"
+        }}
         onIndexChanged={(index) => setActiveIndex(index)}
       >
         {data.onboarding.map((item) => (
           <View key={item.id}>
             <Image source={item.image} style={[tw`w-full`, { height: 400 }]} />
 
-            <View style={tw`p-5`}>
-              <Text style={tw`font-bold text-3xl`}>{item.title}</Text>
-              <Text style={[tw`font-medium text-sm`, { color: "#3F3F46" }]}>
+            <View style={tw`p-6`}>
+              <Text style={tw`font-bold text-3xl mt-6`}>{item.title}</Text>
+              <Text style={[tw`font-medium text-sm mt-2`, { color: "#3F3F46" }]}>
                 {item.description}
               </Text>
             </View>
@@ -46,17 +51,18 @@ const Onboarding = () => {
       </Swiper>
 
       {lastSlide ? (
-        <View style={tw`px-5`}>
+        <View style={tw`px-6 w-full `}>
           <CustomButton
             title="Get Started !"
             onPress={()=> router.replace("/(auth)/welcome")}
             textColor="white"
             backgroundColor="#254EDB"
-             style="w-full"
+            style="mt-2"
+             
           />
         </View>
       ) : (
-        <View style={tw`flex-row w-full justify-between px-5`}>
+        <View style={tw`flex-row w-full justify-between px-6`}>
           <CustomButton
             title="Skip"
             onPress={()=>router.replace("/(auth)/welcome")}

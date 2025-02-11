@@ -7,13 +7,8 @@ import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";
-import { icons } from "@/constants";
-import PersonSvg from "@/assets/svgs/PersonSvg";
-import ExperienceSvg from "@/assets/svgs/ExperienceSvg";
-import StarSvg from "@/assets/svgs/StarSvg";
-import MessageSvg from "@/assets/svgs/MessageSvg";
-import CallSvg from "@/assets/svgs/CallSvg";
-import VideoSvg from "@/assets/svgs/VideoSvg";
+import { CallSvg, ExperienceSvg, MessageSvg, PersonSvg, StarSvg, VideoSvg } from "@/assets/svgs";
+
 
 const doctorDetails = [
   {
@@ -106,6 +101,7 @@ const DoctorProfile = () => {
           >
             {doctorDetails.map((detail) => (
               <View
+              key={detail.value}
                 style={tw`min-h-[130px] flex-grow rounded-2xl bg-white flex gap-4 overflow-hidden`}
               >
                 <View
