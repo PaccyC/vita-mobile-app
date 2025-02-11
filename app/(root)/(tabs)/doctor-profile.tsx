@@ -8,24 +8,30 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";
 import { icons } from "@/constants";
+import PersonSvg from "@/assets/svgs/PersonSvg";
+import ExperienceSvg from "@/assets/svgs/ExperienceSvg";
+import StarSvg from "@/assets/svgs/StarSvg";
+import MessageSvg from "@/assets/svgs/MessageSvg";
+import CallSvg from "@/assets/svgs/CallSvg";
+import VideoSvg from "@/assets/svgs/VideoSvg";
 
 const doctorDetails = [
   {
     value: "1000+",
     desctiption: "patients",
-    icon: icons.person,
+    icon: <PersonSvg/>,
     backgroundColor: "#7acdfa26",
   },
   {
     value: "10 Yrs",
     desctiption: "Experience",
-    icon: icons.experience,
+    icon: <ExperienceSvg/>,
     backgroundColor: "#fdf2f4",
   },
   {
     value: "4.5",
     desctiption: "Ratings",
-    icon: icons.star,
+    icon: <StarSvg/>,
     backgroundColor: "#fef6ec",
   },
 ];
@@ -35,19 +41,19 @@ const communicationsMethods =[
   {
     methodName: "Messaging",
     description:"Chat me up, share photos.",
-    icon: icons.chat,
+    icon: <MessageSvg/>,
     backgroundColor: "#eda1ab26"
   },
   {
     methodName: "Audio Call",
     description:"Call your doctor directly.",
-    icon: icons.call,
+    icon: <CallSvg/>,
     backgroundColor: "#7acdfa26"
   },
   {
     methodName: "Video Call",
     description:"See your doctor live.",
-    icon: icons.video,
+    icon: <VideoSvg/>,
     backgroundColor: "#f7c48226"
   }
 ]
@@ -72,7 +78,6 @@ const DoctorProfile = () => {
             </TouchableOpacity>
 
             <TouchableOpacity>
-              q
               <Entypo name="dots-three-vertical" size={20} color="#231F20" />
             </TouchableOpacity>
           </View>
@@ -86,12 +91,12 @@ const DoctorProfile = () => {
             style={tw`flex w-full flex-col gap-2 items-center justify-center mb-4`}
           >
             <Text
-              style={tw`text-[#222B45] text-[20px] fonr-medium text-center`}
+              style={tw`text-[#222B45] text-[20px] font-medium text-center`}
             >
               Dr. Bellamy Nicholas
             </Text>
             <Text
-              style={tw`text-[#6B779A] text-[14px] fonr-medium text-center`}
+              style={tw`text-[#6B779A] text-[14px] font-medium text-center`}
             >
               Viralogist
             </Text>
@@ -104,15 +109,15 @@ const DoctorProfile = () => {
                 style={tw`min-h-[130px] flex-grow rounded-2xl bg-white flex gap-4 overflow-hidden`}
               >
                 <View
-                  style={tw`bg-[${detail.backgroundColor}] h-[60px] w-[50%] self-center rounded-b-lg flex justify-end items-center`}
+                  style={tw`bg-[${detail.backgroundColor}] h-[60px] w-[50%] self-center rounded-b-lg flex justify-end items-center pb-2`}
                 >
-                  <Image style={tw``} source={detail.icon} />
+                  { detail.icon}
                 </View>
                 <View style={tw`flex`}>
                   <Text
                     style={tw`text-[#222B45] text-center text-[17px] font-medium`}
                   >
-                    {detail.value}
+                   {detail.value}
                   </Text>
                   <Text
                     style={tw`text-[#6B779A] text-center text-[14px] font-normal`}
@@ -143,16 +148,15 @@ const DoctorProfile = () => {
            Mon - Sat (08:30 AM - 09:00 PM)
           </Text>
         </View>
-        {/* Communication details */}
         <View style={tw`mt-6 px-6 flex gap-3`}>
           <Text style={tw`text-xl text-[#222B45] font-medium`}>Communication</Text>
           <View style={tw`flex flex-col gap-4 items-center`}>
             {communicationsMethods.map((method)=>(
               <View 
               key={method.methodName} 
-              style={tw`w-full flex flex-row gap-3 items-center`}>
-                <View style={tw`w-12 h-12 bg-[${method.backgroundColor}] rounded-lg`}>
-                  <Image source={method.icon}/>
+              style={tw`w-full flex flex-row gap-3 items-center `}>
+                <View style={tw`w-12 h-12 bg-[${method.backgroundColor}] rounded-xl justify-center items-center`}>
+                  {method.icon}
                 </View>
                 <View style={tw`flex`}>
                   <Text  style={tw`text-[#222B45] font-normal text-lg`}>{method.methodName}</Text>

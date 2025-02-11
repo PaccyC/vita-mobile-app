@@ -5,6 +5,8 @@ import { icons, images } from "@/constants";
 import CustomButton from "@/components/CustomButton";
 import { Link, router } from "expo-router";
 import Footer from "@/components/Footer";
+import GoogleSvg from "@/assets/svgs/GoogleSvg";
+import AppleSvg from "@/assets/svgs/AppleSvg";
 const Welcome = () => {
   return (
     <SafeAreaView style={tw`flex flex-1 relative  items-center`}>
@@ -32,15 +34,7 @@ const Welcome = () => {
            <CustomButton
        title='Sign In with Google'
        style=" w-full shadow-none border border-[#D2D6DB]"
-       IconLeft={()=>(
-        <Image 
-        source={icons.google}
-        style={tw`w-5 h-5 mx-2`}
-        resizeMode='contain'
-        
-        />
-        
-       )}
+       IconLeft={()=>(<GoogleSvg/>)}
        onPress={()=>{}}
        textColor="#254EDB"
        
@@ -51,11 +45,7 @@ const Welcome = () => {
        title='Sign In with Apple'
        style=" w-full shadow-none"
        IconLeft={()=>(
-        <Image 
-        source={icons.google}
-        style={tw`w-5 h-5 mx-2`}
-        resizeMode='contain'
-        />
+        <AppleSvg />
        )}
        onPress={()=>{}}
        textColor="white"

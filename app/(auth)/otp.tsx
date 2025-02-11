@@ -18,6 +18,7 @@ import Footer from "@/components/Footer";
 import OTPInput from "@/components/OTPInput";
 import { icons } from "@/constants";
 import { SafeAreaView } from "react-native-safe-area-context";
+import TimerSvg from "@/assets/svgs/TimerSvg";
 
 const OTP = () => {
   const phoneInputRef = useRef<PhoneInput>(null);
@@ -127,7 +128,7 @@ const OTP = () => {
             <View style={tw`w-full flex flex-row gap-3 items-start`}>
               {timeLeft > 0 ? (
                 <>
-                  <Image source={icons.timer} />
+                  <TimerSvg />
                   <Text>{formatTime(timeLeft)}</Text>
                 </>
               ) : (

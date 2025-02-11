@@ -4,9 +4,11 @@ import tw from "twrnc";
 import { Link, router } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import CustomInput from "@/components/CustomInput";
-import { icons } from "@/constants";
 import CustomButton from "@/components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AppleSvg from "@/assets/svgs/AppleSvg";
+import GoogleSvg from "@/assets/svgs/GoogleSvg";
+import EyeSvg from "@/assets/svgs/EyeSvg";
 
 const SignIn = () => {
   const handleGoBack = () => {
@@ -57,7 +59,7 @@ const SignIn = () => {
               inputStyle=""
               iconStyle=""
               style=""
-              icon={() => <Image source={icons.eye} />}
+              icon={() => <EyeSvg />}
             />
             <View style={tw`w-full flex flex-row justify-end`}>
               <Link href="/(auth)/sign-in">
@@ -84,7 +86,7 @@ const SignIn = () => {
               textColor="#254EDB"
               style="mt-4 border border-[#D2D6DB]"
               onPress={() => {}}
-              IconLeft={() => <Image source={icons.google} />}
+              IconLeft={() => <GoogleSvg/>}
             />
             <CustomButton
               title="Sign in with Apple"
@@ -92,7 +94,7 @@ const SignIn = () => {
               textColor="white"
               style="mt-5"
               onPress={() => {}}
-              IconLeft={() => <Image source={icons.apple} />}
+              IconLeft={() => <AppleSvg/>}
             />
 
             <Link
