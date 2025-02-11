@@ -49,7 +49,6 @@ const CreateAppointment = () => {
   const [dates, setDates] = useState<any>([]);
 
   const generateDates = () => {
-    const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0).getDate(); 
     const newDates = [];
 
@@ -98,7 +97,7 @@ const CreateAppointment = () => {
           </Text>
         </View>
 
-     =<View style={tw`mt-6`}>
+     <View style={tw`mt-6`}>
     
           <View style={tw`flex flex-row items-center justify-between mb-4`}>
             <TouchableOpacity onPress={prevMonth}>
@@ -115,7 +114,7 @@ const CreateAppointment = () => {
             </TouchableOpacity>
           </View>
 
-          {/* Days List */}
+        
           <FlatList
             horizontal
             data={dates}
